@@ -23,7 +23,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "D:\\Web Development\\Companies\\Convert Cart\\Assignment (ConvertCart)\\generated\\prisma",
+      "value": "D:\\Web Development\\Companies\\Convert Cart\\Assignment (ConvertCart)\\src\\generated",
       "fromEnvVar": null
     },
     "config": {
@@ -47,6 +47,7 @@ const config: runtime.GetPrismaClientConfig = {
     "db"
   ],
   "activeProvider": "mysql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -55,8 +56,8 @@ const config: runtime.GetPrismaClientConfig = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Restaurant {\n  id   String @id @default(cuid())\n  name String @db.VarChar(150)\n  city String @db.VarChar(100)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt()\n\n  menuItems MenuItem[]\n}\n\nmodel MenuItem {\n  id           String  @id @default(cuid())\n  restaurantId String\n  dishName     String  @db.VarChar(150)\n  price        Decimal @db.Decimal(10, 2)\n  isAvailable  Boolean @default(true)\n\n  // Denormalized counter\n  orderCount Int @default(0)\n\n  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)\n  orders     Order[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt()\n\n  @@index([restaurantId, dishName]) // to avoid duplicated food items in same restaurant (can be removed)\n  @@fulltext([dishName]) // for better search of dishes\n}\n\n// currently not used\nmodel Order {\n  id         String   @id @default(cuid())\n  menuItemId String\n  quantity   Int      @default(1)\n  orderedAt  DateTime @default(now())\n\n  menuItem MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)\n\n  @@index([menuItemId])\n}\n",
-  "inlineSchemaHash": "fa5bcc4f6d2577e1ff48fe33a868873e4710cf5b2c2bff506a7132f1ccea6e19",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Restaurant {\n  id   String @id @default(cuid())\n  name String @db.VarChar(150)\n  city String @db.VarChar(100)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt()\n\n  menuItems MenuItem[]\n}\n\nmodel MenuItem {\n  id           String  @id @default(cuid())\n  restaurantId String\n  dishName     String  @db.VarChar(150)\n  price        Decimal @db.Decimal(10, 2)\n  isAvailable  Boolean @default(true)\n\n  // Denormalized counter\n  orderCount Int @default(0)\n\n  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)\n  orders     Order[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt()\n\n  @@index([restaurantId, dishName]) // to avoid duplicated food items in same restaurant (can be removed)\n  @@fulltext([dishName]) // for better search of dishes\n}\n\n// currently not used\nmodel Order {\n  id         String   @id @default(cuid())\n  menuItemId String\n  quantity   Int      @default(1)\n  orderedAt  DateTime @default(now())\n\n  menuItem MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)\n\n  @@index([menuItemId])\n}\n",
+  "inlineSchemaHash": "b6eac868d4cd8e6437194ad1595056cd076eeba54a52b39128abf83953da8bf7",
   "copyEngine": true,
   "runtimeDataModel": {
     "models": {},

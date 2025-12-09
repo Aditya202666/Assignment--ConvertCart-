@@ -3,7 +3,8 @@ import express, { type Application } from "express";
 import helmet from "helmet";
 import cors from "cors";
 
-import { ALLOWED_ORIGIN } from "./config/constants.config.js";
+import { ALLOWED_ORIGIN } from "./lib/constants.js";
+import { prisma } from "./lib/prima.js";
 
 const app: Application = express();
 const port = process.env.PORT || 3000;
@@ -14,13 +15,21 @@ app.use(
   })
 );
 app.use(helmet());
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
+
+app.get("/", async (req, res) => {
+
+  const restaurants = await prisma.restaurant.findMany({
+    include: {
+      menuItems: true,
+    },
+  });
+
   res.json({
-    name: "Aditya",
-    work: "Coding",
+    message: "hello world",
+    data: restaurants,
   });
 });
 

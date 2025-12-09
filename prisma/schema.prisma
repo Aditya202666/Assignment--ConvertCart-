@@ -1,6 +1,12 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated"
 }
 
 datasource db {
@@ -8,32 +14,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+  model Restaurant {
+    id        String        @id @default(cuid())
+    name      String     @db.VarChar(150)
+    city      String     @db.VarChar(100)
 
-model Restaurant {
-  id        String        @id @default(cuid())
-  name      String     @db.VarChar(150)
-  city      String     @db.VarChar(100)
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt()
 
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt()
+    menuItems MenuItem[]
 
-  menuItems MenuItem[]
+  }
 
-}
+  model MenuItem {
 
-model MenuItem {
+    id           String      @id @default(cuid())
+    restaurantId String
+    dishName     String   @db.VarChar(150)
+    price        Decimal  @db.Decimal(10,2)
+    isAvailable  Boolean  @default(true)
+    
+    // Denormalized counter
+    orderCount   Int      @default(0)
 
-  id           String      @id @default(cuid())
-  restaurantId String
-  dishName     String   @db.VarChar(150)
-  price        Decimal  @db.Decimal(10,2)
-  isAvailable  Boolean  @default(true)
-  
-  // Denormalized counter
-  orderCount   Int      @default(0)
-
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
-  orders       Order[]
+    restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+    orders       Order[]
 
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt()
