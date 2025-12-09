@@ -1,25 +1,33 @@
-import { prisma } from "../lib/prima.js";
 import 'dotenv/config'
+import fs from 'fs/promises'
 
-async function main() {
+import { prisma } from "../lib/prima.js";
+
+
+
+
+async function seedDatabase() {
+
+  //delete old data 
+  await prisma.menuItem.deleteMany();
+  await prisma.order.deleteMany();
+  await prisma.restaurant.deleteMany();
+
+  console.log("Seeding database...");
+  
+  const restaurantsJsonData = JSON.parse(
+    await fs.readFile("./src/seed/restaurants.json", "utf-8")
+  );
+  
+  const menuItemsJsonData = JSON.parse(
+    await fs.readFile("./src/seed/menuItems.json", "utf-8")
+  );
 
   // Create multiple restaurants
-  const restaurantsData = [
-    { name: "Burger Town", city: "Mumbai" },
-    { name: "Spice Hub", city: "Delhi" },
-    { name: "Pizza Planet", city: "Bangalore" },
-  ];
-
   const createdRestaurants = await prisma.restaurant.createMany({
-    data: restaurantsData,
+    data: restaurantsJsonData,
   });
 
-  // Prepare menu items (same items for all restaurants)
-  const menuTemplates = [
-    { name: "Biryani", price: 100 },
-    { name: "Pizza", price: 200 },
-    { name: "Burger", price: 300 },
-  ];
 
   // Assign menu items to each restaurant with random orderCount
   const menuItemsData = [];
@@ -28,10 +36,10 @@ async function main() {
   const restaurants = await prisma.restaurant.findMany();
 
   for (const restaurant of restaurants) {
-    for (const menu of menuTemplates) {
+    for (const menu of menuItemsJsonData) {
       menuItemsData.push({
         dishName: menu.name,
-        price: menu.price,
+        price: Math.random() * 1000,
         orderCount: Math.floor(Math.random() * 100), // random orders
         restaurantId: restaurant.id, // link to restaurant
       });
@@ -46,5 +54,5 @@ async function main() {
   console.log("Seeding completed!");
 }
 
-main()
+seedDatabase()
   .catch((err) => console.error(err))

@@ -1,0 +1,16 @@
+[
+    { "name": "Burger"},
+    { "name": "Pizza"},
+    { "name": "Pasta"},
+    { "name": "Rice"},
+    { "name": "Noodles"},
+    { "name": "Sushi"},
+    { "name": "Salad"},
+    { "name": "Soup"},
+    { "name": "Sandwich"},
+    { "name": "Tacos"},
+    { "name" : "biryani" },
+    { "name" : "chicken" },
+    { "name" : "mutton" },
+    { "name" : "fish" }
+]

@@ -1,4 +1,4 @@
-import { RequestHandler, Request, Response, NextFunction } from "express";
+import { type RequestHandler, type Request, type Response, type NextFunction } from "express";
 type asyncRequestHandler = (
   req: Request,
   res: Response,

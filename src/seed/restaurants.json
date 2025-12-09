@@ -1,0 +1,22 @@
+[
+  { "name": "Burger Town", "city": "Mumbai" },
+  { "name": "Spice Hub", "city": "Delhi" },
+  { "name": "Pizza Planet", "city": "Bangalore" },
+  { "name": "Curry Castle", "city": "Mumbai" },
+  { "name": "Tandoori Treats", "city": "Delhi" },
+  { "name": "Urban Bites", "city": "Bangalore" },
+  { "name": "Street Feast", "city": "Mumbai" },
+  { "name": "Royal Dine", "city": "Delhi" },
+  { "name": "Hot Wok", "city": "Bangalore" },
+  { "name": "Masala Magic", "city": "Mumbai" },
+  { "name": "Grill & Chill", "city": "Delhi" },
+  { "name": "The Spice Route", "city": "Bangalore" },
+  { "name": "Bombay Buns", "city": "Mumbai" },
+  { "name": "Delhi Delights", "city": "Delhi" },
+  { "name": "Southern Stories", "city": "Bangalore" },
+  { "name": "Fast Feast", "city": "Mumbai" },
+  { "name": "Fork & Flame", "city": "Delhi" },
+  { "name": "Crave Corner", "city": "Bangalore" },
+  { "name": "Midnight Munchies", "city": "Mumbai" },
+  { "name": "Spice Symphony", "city": "Delhi" }
+]
