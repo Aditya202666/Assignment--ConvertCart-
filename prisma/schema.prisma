@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Restaurant {
+  id        String        @id @default(cuid())
+  name      String     @db.VarChar(150)
+  city      String     @db.VarChar(100)
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt()
+
+  menuItems MenuItem[]
+
+}
+
+model MenuItem {
+
+  id           String      @id @default(cuid())
+  restaurantId String
+  dishName     String   @db.VarChar(150)
+  price        Decimal  @db.Decimal(10,2)
+  isAvailable  Boolean  @default(true)
+  
+  // Denormalized counter
+  orderCount   Int      @default(0)
+
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  orders       Order[]
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt()
+
+  @@fulltext([dishName]) // for better search of dishes
+  @@index([restaurantId, dishName]) // to avoid duplicated food items in same restaurant (can be removed)
+}
+
+
+// currently not used
+model Order {
+  id             String    @id @default(cuid())
+  menuItemId   String
+  quantity     Int      @default(1)
+  orderedAt    DateTime @default(now())
+
+  menuItem     MenuItem  @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+
+  @@index([menuItemId])
+}
