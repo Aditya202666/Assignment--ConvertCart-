@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import searchRoutes from "./searchRoute.js";
 import ApiResponse from "../utils/ApiResponse.js";
-import { getAllDetails } from "./homeRoute.js";
+import { getAllDetails } from "../controllers/homeController.js";
 
 const router = Router();
 

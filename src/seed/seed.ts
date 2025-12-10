@@ -3,7 +3,6 @@ import "dotenv/config";
 import fs from "fs/promises";
 
 import { prisma } from "../lib/prima.js";
-import type { Prisma } from "@prisma/client";
 
 async function seedDatabase() {
   //delete old data

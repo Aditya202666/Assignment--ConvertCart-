@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prima.js";
+import ApiResponse from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 const getAllDetails = asyncHandler(async (req, res) => {
@@ -19,10 +20,11 @@ const getAllDetails = asyncHandler(async (req, res) => {
     },
   });
 
-  res.json({
-    message: "hello world",
-    restaurants,
-  });
+  return res.json(
+    new ApiResponse(200, "Restaurants found", {
+      Restaurants: restaurants,
+
+  }))
 });
 
 

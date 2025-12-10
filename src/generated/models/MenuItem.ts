@@ -28,12 +28,10 @@ export type AggregateMenuItem = {
 
 export type MenuItemAvgAggregateOutputType = {
   price: runtime.Decimal | null
-  orderCount: number | null
 }
 
 export type MenuItemSumAggregateOutputType = {
   price: runtime.Decimal | null
-  orderCount: number | null
 }
 
 export type MenuItemMinAggregateOutputType = {
@@ -42,7 +40,6 @@ export type MenuItemMinAggregateOutputType = {
   dishName: string | null
   price: runtime.Decimal | null
   isAvailable: boolean | null
-  orderCount: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -53,7 +50,6 @@ export type MenuItemMaxAggregateOutputType = {
   dishName: string | null
   price: runtime.Decimal | null
   isAvailable: boolean | null
-  orderCount: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,7 +60,6 @@ export type MenuItemCountAggregateOutputType = {
   dishName: number
   price: number
   isAvailable: number
-  orderCount: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -73,12 +68,10 @@ export type MenuItemCountAggregateOutputType = {
 
 export type MenuItemAvgAggregateInputType = {
   price?: true
-  orderCount?: true
 }
 
 export type MenuItemSumAggregateInputType = {
   price?: true
-  orderCount?: true
 }
 
 export type MenuItemMinAggregateInputType = {
@@ -87,7 +80,6 @@ export type MenuItemMinAggregateInputType = {
   dishName?: true
   price?: true
   isAvailable?: true
-  orderCount?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -98,7 +90,6 @@ export type MenuItemMaxAggregateInputType = {
   dishName?: true
   price?: true
   isAvailable?: true
-  orderCount?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -109,7 +100,6 @@ export type MenuItemCountAggregateInputType = {
   dishName?: true
   price?: true
   isAvailable?: true
-  orderCount?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -207,7 +197,6 @@ export type MenuItemGroupByOutputType = {
   dishName: string
   price: runtime.Decimal
   isAvailable: boolean
-  orderCount: number
   createdAt: Date
   updatedAt: Date
   _count: MenuItemCountAggregateOutputType | null
@@ -241,7 +230,6 @@ export type MenuItemWhereInput = {
   dishName?: Prisma.StringFilter<"MenuItem"> | string
   price?: Prisma.DecimalFilter<"MenuItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFilter<"MenuItem"> | boolean
-  orderCount?: Prisma.IntFilter<"MenuItem"> | number
   createdAt?: Prisma.DateTimeFilter<"MenuItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MenuItem"> | Date | string
   restaurant?: Prisma.XOR<Prisma.RestaurantScalarRelationFilter, Prisma.RestaurantWhereInput>
@@ -254,7 +242,6 @@ export type MenuItemOrderByWithRelationInput = {
   dishName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
-  orderCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   restaurant?: Prisma.RestaurantOrderByWithRelationInput
@@ -271,7 +258,6 @@ export type MenuItemWhereUniqueInput = Prisma.AtLeast<{
   dishName?: Prisma.StringFilter<"MenuItem"> | string
   price?: Prisma.DecimalFilter<"MenuItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFilter<"MenuItem"> | boolean
-  orderCount?: Prisma.IntFilter<"MenuItem"> | number
   createdAt?: Prisma.DateTimeFilter<"MenuItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MenuItem"> | Date | string
   restaurant?: Prisma.XOR<Prisma.RestaurantScalarRelationFilter, Prisma.RestaurantWhereInput>
@@ -284,7 +270,6 @@ export type MenuItemOrderByWithAggregationInput = {
   dishName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
-  orderCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.MenuItemCountOrderByAggregateInput
@@ -303,7 +288,6 @@ export type MenuItemScalarWhereWithAggregatesInput = {
   dishName?: Prisma.StringWithAggregatesFilter<"MenuItem"> | string
   price?: Prisma.DecimalWithAggregatesFilter<"MenuItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolWithAggregatesFilter<"MenuItem"> | boolean
-  orderCount?: Prisma.IntWithAggregatesFilter<"MenuItem"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"MenuItem"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"MenuItem"> | Date | string
 }
@@ -313,7 +297,6 @@ export type MenuItemCreateInput = {
   dishName: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: boolean
-  orderCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   restaurant: Prisma.RestaurantCreateNestedOneWithoutMenuItemsInput
@@ -326,7 +309,6 @@ export type MenuItemUncheckedCreateInput = {
   dishName: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: boolean
-  orderCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutMenuItemInput
@@ -337,7 +319,6 @@ export type MenuItemUpdateInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutMenuItemsNestedInput
@@ -350,7 +331,6 @@ export type MenuItemUncheckedUpdateInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUncheckedUpdateManyWithoutMenuItemNestedInput
@@ -362,7 +342,6 @@ export type MenuItemCreateManyInput = {
   dishName: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: boolean
-  orderCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -372,7 +351,6 @@ export type MenuItemUpdateManyMutationInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -383,7 +361,6 @@ export type MenuItemUncheckedUpdateManyInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -410,14 +387,12 @@ export type MenuItemCountOrderByAggregateInput = {
   dishName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
-  orderCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type MenuItemAvgOrderByAggregateInput = {
   price?: Prisma.SortOrder
-  orderCount?: Prisma.SortOrder
 }
 
 export type MenuItemMaxOrderByAggregateInput = {
@@ -426,7 +401,6 @@ export type MenuItemMaxOrderByAggregateInput = {
   dishName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
-  orderCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -437,14 +411,12 @@ export type MenuItemMinOrderByAggregateInput = {
   dishName?: Prisma.SortOrder
   price?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
-  orderCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type MenuItemSumOrderByAggregateInput = {
   price?: Prisma.SortOrder
-  orderCount?: Prisma.SortOrder
 }
 
 export type MenuItemScalarRelationFilter = {
@@ -506,14 +478,6 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type MenuItemCreateNestedOneWithoutOrdersInput = {
   create?: Prisma.XOR<Prisma.MenuItemCreateWithoutOrdersInput, Prisma.MenuItemUncheckedCreateWithoutOrdersInput>
   connectOrCreate?: Prisma.MenuItemCreateOrConnectWithoutOrdersInput
@@ -533,7 +497,6 @@ export type MenuItemCreateWithoutRestaurantInput = {
   dishName: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: boolean
-  orderCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   orders?: Prisma.OrderCreateNestedManyWithoutMenuItemInput
@@ -544,7 +507,6 @@ export type MenuItemUncheckedCreateWithoutRestaurantInput = {
   dishName: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: boolean
-  orderCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutMenuItemInput
@@ -585,7 +547,6 @@ export type MenuItemScalarWhereInput = {
   dishName?: Prisma.StringFilter<"MenuItem"> | string
   price?: Prisma.DecimalFilter<"MenuItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFilter<"MenuItem"> | boolean
-  orderCount?: Prisma.IntFilter<"MenuItem"> | number
   createdAt?: Prisma.DateTimeFilter<"MenuItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MenuItem"> | Date | string
 }
@@ -595,7 +556,6 @@ export type MenuItemCreateWithoutOrdersInput = {
   dishName: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: boolean
-  orderCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   restaurant: Prisma.RestaurantCreateNestedOneWithoutMenuItemsInput
@@ -607,7 +567,6 @@ export type MenuItemUncheckedCreateWithoutOrdersInput = {
   dishName: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: boolean
-  orderCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -633,7 +592,6 @@ export type MenuItemUpdateWithoutOrdersInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   restaurant?: Prisma.RestaurantUpdateOneRequiredWithoutMenuItemsNestedInput
@@ -645,7 +603,6 @@ export type MenuItemUncheckedUpdateWithoutOrdersInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -655,7 +612,6 @@ export type MenuItemCreateManyRestaurantInput = {
   dishName: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: boolean
-  orderCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -665,7 +621,6 @@ export type MenuItemUpdateWithoutRestaurantInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUpdateManyWithoutMenuItemNestedInput
@@ -676,7 +631,6 @@ export type MenuItemUncheckedUpdateWithoutRestaurantInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUncheckedUpdateManyWithoutMenuItemNestedInput
@@ -687,7 +641,6 @@ export type MenuItemUncheckedUpdateManyWithoutRestaurantInput = {
   dishName?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  orderCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -729,7 +682,6 @@ export type MenuItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   dishName?: boolean
   price?: boolean
   isAvailable?: boolean
-  orderCount?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   restaurant?: boolean | Prisma.RestaurantDefaultArgs<ExtArgs>
@@ -745,12 +697,11 @@ export type MenuItemSelectScalar = {
   dishName?: boolean
   price?: boolean
   isAvailable?: boolean
-  orderCount?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type MenuItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "restaurantId" | "dishName" | "price" | "isAvailable" | "orderCount" | "createdAt" | "updatedAt", ExtArgs["result"]["menuItem"]>
+export type MenuItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "restaurantId" | "dishName" | "price" | "isAvailable" | "createdAt" | "updatedAt", ExtArgs["result"]["menuItem"]>
 export type MenuItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   restaurant?: boolean | Prisma.RestaurantDefaultArgs<ExtArgs>
   orders?: boolean | Prisma.MenuItem$ordersArgs<ExtArgs>
@@ -769,7 +720,6 @@ export type $MenuItemPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     dishName: string
     price: runtime.Decimal
     isAvailable: boolean
-    orderCount: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["menuItem"]>
@@ -1148,7 +1098,6 @@ export interface MenuItemFieldRefs {
   readonly dishName: Prisma.FieldRef<"MenuItem", 'String'>
   readonly price: Prisma.FieldRef<"MenuItem", 'Decimal'>
   readonly isAvailable: Prisma.FieldRef<"MenuItem", 'Boolean'>
-  readonly orderCount: Prisma.FieldRef<"MenuItem", 'Int'>
   readonly createdAt: Prisma.FieldRef<"MenuItem", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"MenuItem", 'DateTime'>
 }
