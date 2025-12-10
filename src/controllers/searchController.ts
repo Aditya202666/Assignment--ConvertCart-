@@ -15,8 +15,8 @@ const searchDishesByName = asyncHandler(async (req, res) => {
     where: {
       AND: [
         { dishName: { contains: dishName as string }, isAvailable: true },
-        minPrice ? { price: { gte: Number(minPrice) } } : {},
-        maxPrice ? { price: { lte: Number(maxPrice) } } : {},
+        { price: { gte: Number(minPrice) } },
+        { price: { lte: Number(maxPrice) } },
       ],
     },
 

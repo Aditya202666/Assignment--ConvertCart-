@@ -10,7 +10,7 @@ const optionalNumberFromQuery = z.preprocess((val)=>{
     return isNaN(num) ? val : num   
     
 },
-z.number().min(0, { message: "Price cannot be negative."}).optional()
+z.number().min(0, { message: "Price cannot be negative."})
 )
 
 
