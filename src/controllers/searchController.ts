@@ -24,7 +24,6 @@ const searchDishesByName = asyncHandler(async (req, res) => {
       dishName: true,
       price: true,
       isAvailable: true,
-      orderCount: true,
       restaurant: {
         select: {
           id: true,
@@ -32,24 +31,49 @@ const searchDishesByName = asyncHandler(async (req, res) => {
           city: true,
         },
       },
+      _count: {
+        select: {
+          orders: true,
+        },
+      },
     },
 
     orderBy: {
-      orderCount: "desc",
+      orders: {
+        _count: "desc",
+      },
     },
 
     take: 10,
   });
 
   if (dishes.length === 0) {
-    res.json(
-      new ApiResponse(404, "No dishes found", {
-        message: "No dishes found!, try other dish name or price range",
-      })
+    return res.json(
+      new ApiResponse(
+        200,
+        "No dishes found!, try other dish name or price range",
+        {}
+      )
     );
   }
 
-  return res.status(200).json(dishes);
+  const filteredData = dishes.map((dish) => {
+    return {
+      restaurantId: dish.restaurant.id,
+      restaurantName: dish.restaurant.name,
+      city: dish.restaurant.city,
+      dishName: dish.dishName,
+      dishPrice: dish.price,
+      isAvailable: dish.isAvailable,
+      orderCount: dish._count.orders,
+    };
+  });
+
+  return res.status(200).json(
+    new ApiResponse(200, "Dishes found", {
+      Restaurants: filteredData,
+    })
+  );
 });
 
 export { searchDishesByName };

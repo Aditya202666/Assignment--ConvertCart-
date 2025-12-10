@@ -1,56 +1,33 @@
 import "dotenv/config";
-import express, { type Application } from "express";
-import helmet from "helmet";
 import cors from "cors";
+import helmet from "helmet";
+import express, { type Application } from "express";
 
-import { ALLOWED_ORIGIN } from "./lib/constants.js";
-import { prisma } from "./lib/prima.js";
+import { ALLOWED_ORIGIN, PORT } from "./utils/constants.js";
+
 import routes from "./routes/index.js";
-import ApiResponse from "./utils/ApiResponse.js";
+import globalRateLimiter from "./middlewares/rateLimiter.js";
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
 
 const app: Application = express();
-const port = process.env.PORT || 3000;
 
+// * middlewares
 app.use(
   cors({
     origin: ALLOWED_ORIGIN,
   })
 );
 app.use(helmet());
+app.use(globalRateLimiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// routes
 app.use(routes);
 
-app.get("/", async (req, res) => {
-  const restaurants = await prisma.restaurant.findMany({
-    include: {
-      menuItems: true,
-    },
-  });
+// global error handler
+app.use(errorHandlerMiddleware);
 
-  res.json({
-    message: "hello world",
-    restaurants,
-  });
-});
-
-
-// * route not found
-app.all(/.*/, (req, res) => {
-  res.json(
-    new ApiResponse(404, "Route not found", {
-      message: "Route not found!",
-      example: "/api/v1/search/dishes?name=pizza",
-    })
-  );
-});
-
-
-// * global error handler
-app.use(errorHandlerMiddleware)
-
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log("server is running");
 });

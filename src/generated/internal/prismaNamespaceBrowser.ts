@@ -99,6 +99,7 @@ export const OrderScalarFieldEnum = {
   id: 'id',
   menuItemId: 'menuItemId',
   quantity: 'quantity',
+  status: 'status',
   orderedAt: 'orderedAt'
 } as const
 

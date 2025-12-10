@@ -38,6 +38,7 @@ export type OrderMinAggregateOutputType = {
   id: string | null
   menuItemId: string | null
   quantity: number | null
+  status: $Enums.OrderStatus | null
   orderedAt: Date | null
 }
 
@@ -45,6 +46,7 @@ export type OrderMaxAggregateOutputType = {
   id: string | null
   menuItemId: string | null
   quantity: number | null
+  status: $Enums.OrderStatus | null
   orderedAt: Date | null
 }
 
@@ -52,6 +54,7 @@ export type OrderCountAggregateOutputType = {
   id: number
   menuItemId: number
   quantity: number
+  status: number
   orderedAt: number
   _all: number
 }
@@ -69,6 +72,7 @@ export type OrderMinAggregateInputType = {
   id?: true
   menuItemId?: true
   quantity?: true
+  status?: true
   orderedAt?: true
 }
 
@@ -76,6 +80,7 @@ export type OrderMaxAggregateInputType = {
   id?: true
   menuItemId?: true
   quantity?: true
+  status?: true
   orderedAt?: true
 }
 
@@ -83,6 +88,7 @@ export type OrderCountAggregateInputType = {
   id?: true
   menuItemId?: true
   quantity?: true
+  status?: true
   orderedAt?: true
   _all?: true
 }
@@ -177,6 +183,7 @@ export type OrderGroupByOutputType = {
   id: string
   menuItemId: string
   quantity: number
+  status: $Enums.OrderStatus
   orderedAt: Date
   _count: OrderCountAggregateOutputType | null
   _avg: OrderAvgAggregateOutputType | null
@@ -207,6 +214,7 @@ export type OrderWhereInput = {
   id?: Prisma.StringFilter<"Order"> | string
   menuItemId?: Prisma.StringFilter<"Order"> | string
   quantity?: Prisma.IntFilter<"Order"> | number
+  status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   menuItem?: Prisma.XOR<Prisma.MenuItemScalarRelationFilter, Prisma.MenuItemWhereInput>
 }
@@ -215,6 +223,7 @@ export type OrderOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   menuItemId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   orderedAt?: Prisma.SortOrder
   menuItem?: Prisma.MenuItemOrderByWithRelationInput
   _relevance?: Prisma.OrderOrderByRelevanceInput
@@ -227,6 +236,7 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
   menuItemId?: Prisma.StringFilter<"Order"> | string
   quantity?: Prisma.IntFilter<"Order"> | number
+  status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   menuItem?: Prisma.XOR<Prisma.MenuItemScalarRelationFilter, Prisma.MenuItemWhereInput>
 }, "id">
@@ -235,6 +245,7 @@ export type OrderOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   menuItemId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   orderedAt?: Prisma.SortOrder
   _count?: Prisma.OrderCountOrderByAggregateInput
   _avg?: Prisma.OrderAvgOrderByAggregateInput
@@ -250,12 +261,14 @@ export type OrderScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Order"> | string
   menuItemId?: Prisma.StringWithAggregatesFilter<"Order"> | string
   quantity?: Prisma.IntWithAggregatesFilter<"Order"> | number
+  status?: Prisma.EnumOrderStatusWithAggregatesFilter<"Order"> | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
 }
 
 export type OrderCreateInput = {
   id?: string
   quantity?: number
+  status?: $Enums.OrderStatus
   orderedAt?: Date | string
   menuItem: Prisma.MenuItemCreateNestedOneWithoutOrdersInput
 }
@@ -264,12 +277,14 @@ export type OrderUncheckedCreateInput = {
   id?: string
   menuItemId: string
   quantity?: number
+  status?: $Enums.OrderStatus
   orderedAt?: Date | string
 }
 
 export type OrderUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   menuItem?: Prisma.MenuItemUpdateOneRequiredWithoutOrdersNestedInput
 }
@@ -278,6 +293,7 @@ export type OrderUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   menuItemId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -285,12 +301,14 @@ export type OrderCreateManyInput = {
   id?: string
   menuItemId: string
   quantity?: number
+  status?: $Enums.OrderStatus
   orderedAt?: Date | string
 }
 
 export type OrderUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -298,6 +316,7 @@ export type OrderUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   menuItemId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -321,6 +340,7 @@ export type OrderCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   menuItemId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   orderedAt?: Prisma.SortOrder
 }
 
@@ -332,6 +352,7 @@ export type OrderMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   menuItemId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   orderedAt?: Prisma.SortOrder
 }
 
@@ -339,6 +360,7 @@ export type OrderMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   menuItemId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   orderedAt?: Prisma.SortOrder
 }
 
@@ -388,15 +410,21 @@ export type OrderUncheckedUpdateManyWithoutMenuItemNestedInput = {
   deleteMany?: Prisma.OrderScalarWhereInput | Prisma.OrderScalarWhereInput[]
 }
 
+export type EnumOrderStatusFieldUpdateOperationsInput = {
+  set?: $Enums.OrderStatus
+}
+
 export type OrderCreateWithoutMenuItemInput = {
   id?: string
   quantity?: number
+  status?: $Enums.OrderStatus
   orderedAt?: Date | string
 }
 
 export type OrderUncheckedCreateWithoutMenuItemInput = {
   id?: string
   quantity?: number
+  status?: $Enums.OrderStatus
   orderedAt?: Date | string
 }
 
@@ -433,30 +461,35 @@ export type OrderScalarWhereInput = {
   id?: Prisma.StringFilter<"Order"> | string
   menuItemId?: Prisma.StringFilter<"Order"> | string
   quantity?: Prisma.IntFilter<"Order"> | number
+  status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
 }
 
 export type OrderCreateManyMenuItemInput = {
   id?: string
   quantity?: number
+  status?: $Enums.OrderStatus
   orderedAt?: Date | string
 }
 
 export type OrderUpdateWithoutMenuItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OrderUncheckedUpdateWithoutMenuItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OrderUncheckedUpdateManyWithoutMenuItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   orderedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -466,6 +499,7 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   menuItemId?: boolean
   quantity?: boolean
+  status?: boolean
   orderedAt?: boolean
   menuItem?: boolean | Prisma.MenuItemDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["order"]>
@@ -476,10 +510,11 @@ export type OrderSelectScalar = {
   id?: boolean
   menuItemId?: boolean
   quantity?: boolean
+  status?: boolean
   orderedAt?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "menuItemId" | "quantity" | "orderedAt", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "menuItemId" | "quantity" | "status" | "orderedAt", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   menuItem?: boolean | Prisma.MenuItemDefaultArgs<ExtArgs>
 }
@@ -493,6 +528,7 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     menuItemId: string
     quantity: number
+    status: $Enums.OrderStatus
     orderedAt: Date
   }, ExtArgs["result"]["order"]>
   composites: {}
@@ -867,6 +903,7 @@ export interface OrderFieldRefs {
   readonly id: Prisma.FieldRef<"Order", 'String'>
   readonly menuItemId: Prisma.FieldRef<"Order", 'String'>
   readonly quantity: Prisma.FieldRef<"Order", 'Int'>
+  readonly status: Prisma.FieldRef<"Order", 'OrderStatus'>
   readonly orderedAt: Prisma.FieldRef<"Order", 'DateTime'>
 }
     
