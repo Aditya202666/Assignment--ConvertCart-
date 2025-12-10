@@ -14,7 +14,7 @@ router.all(/.*/, (req, res) => {
   res.json(
     new ApiResponse(404, "Route not found", {
       message: "Route not found!",
-      example: "/api/v1/search/dishes?name=pizza",
+      example: "/api/v1/search/dishes?name=pizza&minPrice=10&maxPrice=2000",
     })
   );
 });
