@@ -5,6 +5,9 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 const getAllDetails = asyncHandler(async (req, res) => {
   const restaurants = await prisma.restaurant.findMany({
     select: {
+      id: true,
+      name: true,
+      city: true,
       menuItems: {
         select: {
           dishName: true,

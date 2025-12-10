@@ -1,15 +1,16 @@
 import { Router } from "express";
 
 import searchRoutes from "./searchRoute.js";
+import homeRoutes from "./homeRoute.js";
 import ApiResponse from "../utils/ApiResponse.js";
-import { getAllDetails } from "../controllers/homeController.js";
 
 const router = Router();
 
 router.use("/api/v1/search", searchRoutes);
-router.get("/", getAllDetails); // default route (For assignment testing only,  fetch all details of all restaurants(heavy))
+router.use("/api/v1/restaurants", homeRoutes); 
 
-router.all(/.*/, (req, res) => { // not found route
+// not found route
+router.all(/.*/, (req, res) => { 
   res.json(
     new ApiResponse(404, "Route not found", {
       message: "Route not found!",
